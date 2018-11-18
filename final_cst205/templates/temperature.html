@@ -1,0 +1,156 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+{{super()}}
+<style>
+body{
+	color: white;
+	background-color: #333399;
+	padding-top: 100px;
+	 margin: 0 0 100px;
+    /* bottom = footer height */
+    padding: 25px;
+
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+ .navbar.navbar-inverse.navbar-fixed-top {
+ 	opacity: 0.5; 
+    filter: (opacity=50); 
+    border: none;
+    padding-bottom:30px;
+
+ 	
+
+}
+
+.navbar-brand {
+	font-size: 2em;
+	color: white;
+	opacity: 1;
+	padding-top: 35px;
+
+}
+
+.info {
+	background-image: url('static/images/night.png');
+	
+	border-radius: 10px;
+	background-size: contain;
+    margin: 0px auto;
+    padding: 10px;
+    padding-top: -100px;
+    width: 220px;
+    box-shadow: 0px 8px 10px #262626, 
+        -10px 8px 15px #262626, 10px 8px 15px #262626;
+}
+
+p {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 2em;
+}
+a{
+	display: inline-block;
+	color: black;
+	
+}
+
+.btn {
+	background: #d76d77;
+}
+
+.btn:hover {
+	background: #ffaf7b;
+}
+
+#index {
+	float: left;
+	margin-left: 30px;
+}
+
+#forecast {
+	float: right;
+	margin-right: 30px;
+}
+</style>
+{% endblock %}
+
+{% block navbar %}
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="margin:0;border-radius:0;" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" style="color:white;">Weather Search</a>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
+
+<!-- Content Block -->
+{% block page_title %} Weather Search {% endblock %}
+
+<!-- Content -->
+{% block content %}
+	<div class="container" >
+		<div class="header" ><h1 style="text-align: center;">Weather for {{ name }}, {{ country }} on {{ date }} ({{ time_z }}) :</h1></div>
+		<hr />
+
+		<!-- Table -->
+
+		<div class="info" style="margin:0 auto;text-align: center;width:45%;padding:30px;margin-bottom: 40px;">
+				<h4>{{ description }}</h4>
+				<img src="http://openweathermap.org/img/w/{{ icon }}.png" width="100" height="100"/>
+				
+				<h3>Temperature:</h3><p> {{ temp }} &deg; <b>F</b></p>
+				<br><br><br><br><br><br><br>
+				<h3>Wind Speed:</h3><p> {{ wind_speed }} <b>m/h</b></p>
+				<h3>Sunrise:</h3><p> {{ pacific }}</p>
+				<h3>Sunset:</h3><p> {{ pacific_down }}</p>
+		</div>
+		
+		<footer>
+		<hr />
+		<a class="btn" id="index" href="{{ url_for('index') }}" role="button">
+		 <span class="glyphicon glyphicon-arrow-left"></span>
+			Back
+		</a>
+		<a class="btn" id="forecast" href="{{ url_for('forecast', id=city) }}" role="button">
+				View Forecast
+			<span class="glyphicon glyphicon-arrow-right"></span>
+		</a>
+	</footer>
+	</div>
+	
+{% endblock %}
+
+<!--
+<html>
+	<head>
+		<title>Current Temperature </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+	<div class="container">
+		<h1>The current temperature (F) is : {{ temp }} degrees.</h1>
+		<p>Wind Speed: {{ wind_speed }}</p>
+		<p>Description: {{ description }}</p>
+	</div>
+	</body>
+</html>-->

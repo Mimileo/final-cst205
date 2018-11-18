@@ -1,0 +1,128 @@
+{% extends 'bootstrap/base.html' %}
+
+
+<html>
+	<head>
+		<title>Request Example</title>
+		{% block styles %}
+{{super()}}
+<style>
+body{
+	background-image: url('static/images/sf_sky.jpg');
+	background-size:cover;
+	color: white;
+	padding-top: 100px;
+
+}
+
+ .navbar.navbar-inverse.navbar-fixed-top {
+ 	opacity: 0.5; 
+    filter: (opacity=50); 
+    border: none;
+    padding-bottom:30px;
+
+ 	
+
+}
+
+
+.navbar-brand {
+	font-size: 2em;
+	color: white;
+	opacity: 1;
+	padding-top: 35px;
+
+}
+
+.btn-danger {
+	margin-top: 20px;
+	padding: 10px;
+	width: 30%;
+	font-size: 1.3em;
+}
+
+.info {
+	
+	
+	border-radius: 10px;
+	background-size: contain;
+    margin: 0px auto;
+    padding: 10px;
+    padding-top: -100px;
+    width: 220px;
+    box-shadow: 0px 8px 10px #262626, 
+        -10px 8px 15px #262626, 10px 8px 15px #262626;
+}
+
+p {
+	font-size: 2em;
+}
+
+label {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 2em;
+}
+input[type="text"]{
+	height: 48px;
+	font-size: 1.4em;
+}
+.col-lg{
+	height:90px;
+}
+
+#search {
+	background: #d76d77;
+}
+
+#search:hover {
+	background: #ffaf7b;
+}
+</style>
+{% endblock %}
+	</head>
+	<body>
+	<!-- Navigation Bar -->
+{% block navbar %}
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="margin:0;border-radius:0;" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" style="color:white;">Weather Search</a>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
+
+	<!-- Content -->
+	{% block content %}
+	<div class="header">
+	<h1 style="text-align: center; margin-top:11%;">Find Your Forecast:</h1>
+	</div>
+	<div class="container" style="text-align:center;margin:0 auto;margin-top:2%;">
+		<form method="POST" action="/temperature">
+			<div class="form-group row">
+				<div class="col-lg" >
+					<label>City Name :</label> <input style="margin:0 auto;" class="form-control" placeholder="city/ city, country..." type="text" name="city">
+					
+				</div>
+			</div>
+			<div class="form-group row" style="margin:0 auto;">
+				<div class="">
+					<button id="search" style="width:20%;margin:0 auto;" class="btn" type="submit">Search</button>
+				</div>
+			</div>
+			
+		</form>
+		{% if error %}
+		   <button class="btn btn-danger" role="btn">
+  				{{ error }}
+		   </button>
+		 {% endif %}
+		
+	</div>
+	{% endblock %}
+	</body>
+</html>

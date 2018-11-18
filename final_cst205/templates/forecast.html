@@ -1,0 +1,206 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+{{super()}}
+<style>
+body{
+	color: white;
+	background-color: #333399;
+	padding-top: 100px;
+	 margin: 0 0 100px;
+    /* bottom = footer height */
+    padding: 25px;
+
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+ .navbar.navbar-inverse.navbar-fixed-top {
+ 	opacity: 0.5; 
+    filter: (opacity=50); 
+    border: none;
+    padding-bottom:30px;
+
+ 	
+
+}
+
+.navbar-brand {
+	font-size: 2em;
+	color: white;
+	opacity: 1;
+	padding-top: 35px;
+
+}
+
+.info {
+	height: 300px;
+	color: white;
+	background: linear-gradient(to bottom, #ff9966 0%, #cc0099 180%);
+	border-radius: 10px;
+	background-size: contain;
+    margin: 0px auto;
+    padding: 1px;
+    padding-top: -50px;
+    width: 220px;
+    box-shadow: 0px 8px 10px #262626, 
+        -10px 8px 15px #262626, 10px 8px 15px #262626;
+    font-size: .9em;
+    width:85%;
+    overflow: scroll;
+
+}
+
+p {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1.8em;
+}
+a{
+	display: inline-block;
+	color:black;
+}
+
+.btn {
+	background: #d76d77;
+}
+
+.btn:hover {
+	background: #ffaf7b;
+}
+
+#index {
+	float: left;
+	margin-left: 30px;
+}
+
+
+</style>
+{% endblock %}
+
+{% block navbar %}
+	<nav class="navbar navbar-inverse navbar-fixed-top" style="margin:0;border-radius:0;" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" style="color:white;">Weather Search</a>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	<div class="container" >
+		<div><h1 style="text-align: center;">Forecast for {{ city }} :</h1></div>
+		<hr />
+
+		<!-- Table -->
+		
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 20px;">
+			<table>
+					<tbody>
+						<h4>{{ days1[0].dt_m }}</h4>
+						<hr>
+						{% for day in days1 %}
+								<p style="text-align: left;"> {{ day.time }}</p>
+								<p>{{ day.temp }} &deg; <b>F</b></p>
+								<p>{{ day.description }}</p>
+								<hr>
+						{% endfor %}
+					</tbody>
+			</table>
+			</div>
+		</div>
+		
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 40px;">
+					<h4>{{ days2[0].dt_m }}</h4>
+					<hr>
+					{% for day in days2 %}
+						<p style="text-align: left;"> {{ day.time }}</p>
+						<p>{{ day.temp }} &deg; <b>F</b></p>
+						<p>{{ day.description }}</p>
+						<hr>
+					{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 40px;">
+					<h4>{{ days3[0].dt_m }}</h4>
+					<hr>
+					{% for day in days3 %}
+						<p style="text-align: left;"> {{ day.time }}</p>
+						<p>{{ day.temp }} &deg; <b>F</b></p>
+						<p>{{ day.description }}</p>
+						<hr>
+					{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 40px;">
+					<h4>{{ days4[0].dt_m }}</h4>
+					<hr>
+					{% for day in days4 %}
+						<p style="text-align: left;"> {{ day.time }}</p>
+						<p>{{ day.temp }} &deg; <b>F</b></p>
+						<p>{{ day.description }}</p>
+						<hr>
+					{% endfor %}
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 40px;">
+					<h4>{{ days5[0].dt_m}}</h4>
+					<hr>
+					{% for day in days5 %}
+						<p style="text-align: left;"> {{ day.time }}</p>
+						<p>{{ day.temp }} &deg; <b>F</b></p>
+						<p>{{ day.description }}</p>
+						<hr>
+					{% endfor %}
+			</div>
+		</div>
+		{% if days6%}
+		<div class="col-md-4">
+			<div class="info" style="margin:0 auto;text-align: center;padding:30px;margin-bottom: 40px;">
+			
+					<h4>{{ days6[0].dt_m}}</h4>
+					<hr>
+					{% for day in days6 %}
+						<p style="text-align: left;"> {{ day.time }}</p>
+						<p>{{ day.temp }} &deg; <b>F</b></p>
+						<p>{{ day.description }}</p>
+						<hr>
+					{% endfor %}
+				
+			</div>
+		</div>
+		{% endif %}
+		<footer>
+		<hr>
+		<a class="btn" id = "index" href="{{ url_for('index') }}" role="button">
+		 <span class="glyphicon glyphicon-arrow-left"></span>
+		 Back to Search
+		 </a>
+		
+		
+		
+		</footer>
+	</div>
+	
+{% endblock %}
