@@ -1,3 +1,21 @@
+'''
+    File name: practice_weather.py
+
+    Author: Mireya Leon
+
+    Date created: 8/5/2018
+
+    Date last modified: 11/17/2018
+
+    Course Name: CST 205: Multimedia Programming
+
+    Description: initilaize flask app. The user's searched word is retrieved from the form. This is used in the weather api query parameter. 
+    Retrieved data from the api is stored in variables. The forecast api creates weather objects from the interval waether reports, 
+    then each object is stored a lsit of the corresponding day
+
+    
+'''
+
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_bootstrap import Bootstrap
 from datetime import datetime
